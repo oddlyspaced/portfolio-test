@@ -8,42 +8,67 @@ class Home extends StatelessWidget {
         width: double.infinity,
         height: double.infinity,
         color: Colors.black,
-        child: Stack(
-          children: [
-            Align(
-              alignment: Alignment.center,
-              child: BackDrop(
-                text: "hello",
-                size: 320,
-                strokeWidth: 8,
+        child: Padding(
+          padding: const EdgeInsets.all(32.0),
+          child: Stack(
+            children: [
+              // Align(
+              //   alignment: Alignment.topLeft,
+              //   child: Text(
+              //     "oddlyspaced",
+              //     style: TextStyle(
+              //       fontStyle: FontStyle.italic,
+              //       color: Color(0xFFe8e6e3),
+              //
+              //     ),
+              //   ),
+              // ),
+              Align(
+                alignment: Alignment.topRight,
+                child: TopNavbar(
+                  items: [
+                    "academics",
+                    "skills",
+                    "experience",
+                    "contact",
+                  ],
+                ),
               ),
-            ),
-            Align(
-              alignment: Alignment.center,
-              child: Wrap(
-                direction: Axis.vertical,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                children: [
-                  Text(
-                    "Hardik Srivastava",
-                    style: TextStyle(
-                      color: Color(0xFFe8e6e3),
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 4,
-                      fontSize: 128,
-                    ),
-                  ),
-                  Text(
-                    "App Developer",
-                    style: TextStyle(
-                      color: Color(0xFFaeacaa),
-                      fontSize: 64,
-                    ),
-                  ),
-                ],
+              Align(
+                alignment: Alignment.center,
+                child: BackDrop(
+                  text: "hello",
+                  size: 320,
+                  strokeWidth: 8,
+                ),
               ),
-            ),
-          ],
+              Align(
+                alignment: Alignment.center,
+                child: Wrap(
+                  direction: Axis.vertical,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  children: [
+                    Text(
+                      "Hardik Srivastava",
+                      style: TextStyle(
+                        color: Color(0xFFe8e6e3),
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 4,
+                        fontSize: 128,
+                      ),
+                    ),
+                    Text(
+                      "App Developer",
+                      style: TextStyle(
+                        color: Color(0xFFaeacaa),
+                        fontSize: 64,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -82,6 +107,31 @@ class BackDrop extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+
+class TopNavbar extends StatelessWidget {
+  final List<String> items;
+  const TopNavbar({this.items}) : super();
+
+  @override
+  Widget build(BuildContext context) {
+    return Wrap(
+      children: items.map((elem) => Padding(
+        padding: const EdgeInsets.only(
+          left: 16, right: 16,
+
+        ),
+        child: Text(
+          elem,
+          style: TextStyle(
+            color: Color(0xFFe8e6e3),
+            fontSize: 24,
+          ),
+        ),
+      )).toList(),
     );
   }
 }
