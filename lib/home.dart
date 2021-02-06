@@ -3,32 +3,80 @@ import 'package:flutter/material.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var size;
     return Scaffold(
       body: Container(
         width: double.infinity,
         height: double.infinity,
         color: Colors.black,
         child: Padding(
-          padding: const EdgeInsets.all(32.0),
+          padding: EdgeInsets.fromLTRB(
+            MediaQuery.of(context).size.width * 0.08,
+            MediaQuery.of(context).size.height * 0.08,
+            MediaQuery.of(context).size.width * 0.08,
+            MediaQuery.of(context).size.height * 0.08,
+          ),
           child: Flexible(
+            flex: 10,
             child: Row(
               children: [
                 Flexible(
                   flex: 4,
                   child: Container(
-                    color: Colors.red,
+                    width: double.infinity,
+                    // color: Colors.red,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Header(),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top: 32,
+                          ),
+                        ),
+                        SubHeader(),
+                      ],
+                    ),
                   ),
                 ),
                 Flexible(
-                  flex: 6,
+                  flex: 1,
                   child: Container(
-                    color: Colors.greenAccent,
+                  ),
+                ),
+                Flexible(
+                  flex: 5,
+                  child: Container(
                   ),
                 ),
               ],
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class Header extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      "Hello, I'm\nHardik Srivastava",
+      style: TextStyle(
+          color: Color(0xFFFFFFFF), fontSize: 80, fontWeight: FontWeight.bold),
+    );
+  }
+}
+
+class SubHeader extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      "Cross Platform and Native Android App Developer working as Tech Lead and App Dev head at BurnerMedia. I mostly do Native Android App Development and I'm a Linux fanatic.",
+      style: TextStyle(
+        color: Color(0xFFa1a1a1),
+        fontSize: 18,
       ),
     );
   }
