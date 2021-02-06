@@ -15,6 +15,7 @@ class Home extends StatelessWidget {
               child: BackDrop(
                 text: "hello",
                 size: 320,
+                strokeWidth: 8,
               ),
             ),
             Align(
@@ -52,10 +53,10 @@ class Home extends StatelessWidget {
 class BackDrop extends StatelessWidget {
   final text;
   final size;
-  var strokeWidth;
+  final strokeWidth;
 
   BackDrop({
-    @required this.text, @required this.size, this.strokeWidth,
+    @required this.text, @required this.size, @required this.strokeWidth,
   }): super();
 
   @override
@@ -68,7 +69,7 @@ class BackDrop extends StatelessWidget {
             fontSize: size,
             foreground: Paint()
               ..style = PaintingStyle.stroke
-              ..strokeWidth = 6
+              ..strokeWidth = strokeWidth
               ..color = Color(0xFF0c0c0c),
           ),
         ),
