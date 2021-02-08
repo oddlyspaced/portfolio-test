@@ -46,7 +46,28 @@ class Home extends StatelessWidget {
                 Flexible(
                   flex: 5,
                   child: Container(
-                    child: ProjectItem(),
+                    height: double.infinity,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          ProjectItem(
+                            technology: "KOTLIN",
+                            name: "Burner Bits 2.0",
+                            desc: "news app",
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                              top: 12,
+                            ),
+                          ),
+                          ProjectItem(
+                            technology: "KOTLIN",
+                            name: "Burner Bits 2.0",
+                            desc: "news app",
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
               ],
@@ -83,6 +104,12 @@ class SubHeader extends StatelessWidget {
 }
 
 class ProjectItem extends StatelessWidget {
+  final String technology;
+  final String name;
+  final String desc;
+
+  const ProjectItem({this.technology, this.name, this.desc}) : super();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -101,7 +128,7 @@ class ProjectItem extends StatelessWidget {
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "KOTLIN",
+              technology,
               style: TextStyle(color: Colors.white),
             ),
             Padding(
@@ -110,7 +137,7 @@ class ProjectItem extends StatelessWidget {
               ),
             ),
             Text(
-              "Burner Bits 2.0",
+              name,
               style: TextStyle(
                 fontSize: 32,
                 color: Colors.white,
@@ -123,7 +150,7 @@ class ProjectItem extends StatelessWidget {
               ),
             ),
             Text(
-              "News and Media App focused on providing short and simple to understand content for the users.",
+              desc,
               style: TextStyle(
                 color: Color(0xFFa1a1a1),
                 fontSize: 16,
