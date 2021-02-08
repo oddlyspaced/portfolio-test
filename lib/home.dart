@@ -114,7 +114,12 @@ class ProjectItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      color: Color(0xFF202022),
+      decoration: BoxDecoration(
+        color: Color(0xFF202022),
+        borderRadius: BorderRadius.circular(
+          4,
+        ),
+      ),
       child: Padding(
         padding: EdgeInsets.fromLTRB(
           MediaQuery.of(context).size.width * 0.02,
