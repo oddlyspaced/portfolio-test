@@ -36,7 +36,9 @@ class Home extends StatelessWidget {
                         ),
                         SubHeader(),
                         Spacer(),
-                        PageSwitcher(),
+                        PageSwitcher(
+                          titles: ["projects", "stuff"],
+                        ),
                       ],
                     ),
                   ),
@@ -81,7 +83,13 @@ class Home extends StatelessWidget {
   }
 }
 
+int active = 1;
+
 class PageSwitcher extends StatefulWidget {
+  final List<String> titles;
+
+  const PageSwitcher({this.titles}) : super();
+
   @override
   _PageSwitcherState createState() => _PageSwitcherState();
 }
@@ -89,38 +97,24 @@ class PageSwitcher extends StatefulWidget {
 class _PageSwitcherState extends State<PageSwitcher> {
   @override
   Widget build(BuildContext context) {
+    int counter = 1;
     return Column(
-      children: [
-        PageItem(
-          isActive: true,
-          title: "PROJECTS",
-          counter: "01",
-        ),
-        Padding(
-          padding: EdgeInsets.only(top: 8),
-        ),
-        PageItem(
-          isActive: false,
-          title: "EDUCATION",
-          counter: "02",
-        ),
-        Padding(
-          padding: EdgeInsets.only(top: 8),
-        ),
-        PageItem(
-          isActive: false,
-          title: "RECOGNITION",
-          counter: "03",
-        ),
-        Padding(
-          padding: EdgeInsets.only(top: 8),
-        ),
-        PageItem(
-          isActive: false,
-          title: "CONTACT",
-          counter: "04",
-        ),
-      ],
+      children: widget.titles
+          .map(
+            (elem) => Padding(
+              padding: const EdgeInsets.only(
+                top: 8,
+              ),
+              child: PageItem(
+                isActive: counter == active,
+                title: elem.toUpperCase(),
+                counter: (counter.toString().length == 1)
+                    ? "0" + (counter++).toString()
+                    : (counter++).toString(),
+              ),
+            ),
+          )
+          .toList(),
     );
   }
 }
