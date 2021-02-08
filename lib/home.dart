@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
@@ -57,7 +59,8 @@ class Home extends StatelessWidget {
                           ProjectItem(
                             technology: "KOTLIN / ANDROID",
                             name: "Burner Bits (Client)",
-                            desc: "News App created to present content in Quick and Easy to read format. Provides Image focused and features all rounded features like customisable User Feed, Offline Post Saving, Native Dark Mode, Grayscale Reading Mode and much more",
+                            desc:
+                                "News App created to present content in Quick and Easy to read format. Provides Image focused and features all rounded features like customisable User Feed, Offline Post Saving, Native Dark Mode, Grayscale Reading Mode and much more",
                           ),
                           Padding(
                             padding: EdgeInsets.only(
@@ -67,7 +70,8 @@ class Home extends StatelessWidget {
                           ProjectItem(
                             technology: "KOTLIN / ANDROID",
                             name: "Guard",
-                            desc: "Privacy centric Android App which lets the user know about Apps which are having to excessive and critical permissions. Provides a Privacy Indicator which shows a dot on screen whenever the device's Camera and/or Mic is being used. Also has features like Cache Cleaner, Bulk Uninstall and Permission Logger",
+                            desc:
+                                "Privacy centric Android App which lets the user know about Apps which are having to excessive and critical permissions. Provides a Privacy Indicator which shows a dot on screen whenever the device's Camera and/or Mic is being used. Also has features like Cache Cleaner, Bulk Uninstall and Permission Logger",
                           ),
                         ],
                       ),
@@ -201,6 +205,13 @@ class ProjectItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Map<String, String> icons = {
+      "github":
+          "https://raw.githubusercontent.com/oddlyspaced/portfolio-test/main/assets/icons/github.png",
+      "playstore":
+          "https://raw.githubusercontent.com/oddlyspaced/portfolio-test/main/assets/icons/playstore.png"
+    };
+
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -257,6 +268,31 @@ class ProjectItem extends StatelessWidget {
                   fontSize: 16,
                 ),
               ),
+              Padding(
+                padding: EdgeInsets.only(
+                  top: 8,
+                ),
+              ),
+              Row(
+                children: [
+                  Image.network(
+                    icons['playstore'],
+                    height: 18,
+                    width: 18,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: 8,
+                    ),
+                  ),
+                  Text(
+                    "Google Play",
+                    style: TextStyle(
+                      color: Color(0xFFa1a1a1),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ),
