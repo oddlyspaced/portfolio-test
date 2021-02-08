@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var size;
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -134,9 +134,9 @@ class PageItem extends StatelessWidget {
           Text(
             counter,
             style: TextStyle(
-              color: (isActive) ? Colors.white : Color(0xFF626262),
-              fontSize: 16,
-            ),
+                color: (isActive) ? Colors.white : Color(0xFF626262),
+                fontSize: 16,
+                fontWeight: FontWeight.w700),
           ),
           Padding(
             padding: EdgeInsets.only(
@@ -157,7 +157,9 @@ class PageItem extends StatelessWidget {
             title,
             style: TextStyle(
               color: (isActive) ? Colors.white : Color(0xFF626262),
+              letterSpacing: 4,
               fontSize: 16,
+              fontWeight: FontWeight.w700,
             ),
           ),
         ],
@@ -221,7 +223,11 @@ class ProjectItem extends StatelessWidget {
           children: [
             Text(
               technology,
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 4,
+              ),
             ),
             Padding(
               padding: EdgeInsets.only(
@@ -233,7 +239,8 @@ class ProjectItem extends StatelessWidget {
               style: TextStyle(
                 fontSize: 32,
                 color: Colors.white,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w600,
+                letterSpacing: 2,
               ),
             ),
             Padding(
