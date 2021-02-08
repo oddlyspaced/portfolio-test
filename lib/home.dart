@@ -73,6 +73,17 @@ class Home extends StatelessWidget {
                             desc:
                                 "Privacy centric Android App which lets the user know about Apps which are having to excessive and critical permissions. Provides a Privacy Indicator which shows a dot on screen whenever the device's Camera and/or Mic is being used. Also has features like Cache Cleaner, Bulk Uninstall and Permission Logger",
                           ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                              top: 12,
+                            ),
+                          ),
+                          ProjectItem(
+                            technology: "KOTLIN / ANDROID",
+                            name: "Covid 19 - Android",
+                            desc:
+                              "Unofficial Android App based on @covid19india's and @novelCOVID's api which visualises stats beautifully using graphs and tables."
+                          ),
                         ],
                       ),
                     ),
