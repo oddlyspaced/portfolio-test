@@ -35,6 +35,7 @@ class Home extends StatelessWidget {
                           ),
                         ),
                         SubHeader(),
+                        PageItem(),
                       ],
                     ),
                   ),
@@ -74,6 +75,47 @@ class Home extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class PageItem extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(
+        children: [
+          Text(
+            "01",
+            style: TextStyle(
+              color: Color(0xFF626262),
+              fontSize: 16,
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+              left: 16,
+            ),
+          ),
+          Container(
+            height: 2,
+            width: 64,
+            color: Color(0xFF626262),
+          ),
+          Padding(
+            padding: EdgeInsets.only(
+              left: 16,
+            ),
+          ),
+          Text(
+            "PROJECTS",
+            style: TextStyle(
+              color: Color(0xFF626262),
+              fontSize: 16,
+            ),
+          ),
+        ],
       ),
     );
   }
