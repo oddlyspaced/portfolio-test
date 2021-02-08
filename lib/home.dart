@@ -41,12 +41,12 @@ class Home extends StatelessWidget {
                 ),
                 Flexible(
                   flex: 1,
-                  child: Container(
-                  ),
+                  child: Container(),
                 ),
                 Flexible(
                   flex: 5,
                   child: Container(
+                    child: ProjectItem(),
                   ),
                 ),
               ],
@@ -77,6 +77,60 @@ class SubHeader extends StatelessWidget {
       style: TextStyle(
         color: Color(0xFFa1a1a1),
         fontSize: 18,
+      ),
+    );
+  }
+}
+
+class ProjectItem extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      color: Color(0xFF202022),
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(
+          MediaQuery.of(context).size.width * 0.02,
+          MediaQuery.of(context).size.height * 0.04,
+          MediaQuery.of(context).size.width * 0.02,
+          MediaQuery.of(context).size.height * 0.04,
+        ),
+        child: Wrap(
+          alignment: WrapAlignment.start,
+          direction: Axis.vertical,
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "KOTLIN",
+              style: TextStyle(color: Colors.white),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                top: 8,
+              ),
+            ),
+            Text(
+              "Burner Bits 2.0",
+              style: TextStyle(
+                fontSize: 32,
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                top: 8,
+              ),
+            ),
+            Text(
+              "News and Media App focused on providing short and simple to understand content for the users.",
+              style: TextStyle(
+                color: Color(0xFFa1a1a1),
+                fontSize: 16,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
