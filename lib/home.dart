@@ -35,11 +35,8 @@ class Home extends StatelessWidget {
                           ),
                         ),
                         SubHeader(),
-                        PageItem(
-                          isActive: true,
-                          title: "PROJECTS",
-                          counter: "01",
-                        ),
+                        Spacer(),
+                        PageSwitcher(),
                       ],
                     ),
                   ),
@@ -84,12 +81,57 @@ class Home extends StatelessWidget {
   }
 }
 
+class PageSwitcher extends StatefulWidget {
+  @override
+  _PageSwitcherState createState() => _PageSwitcherState();
+}
+
+class _PageSwitcherState extends State<PageSwitcher> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        PageItem(
+          isActive: true,
+          title: "PROJECTS",
+          counter: "01",
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 8),
+        ),
+        PageItem(
+          isActive: false,
+          title: "EDUCATION",
+          counter: "02",
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 8),
+        ),
+        PageItem(
+          isActive: false,
+          title: "RECOGNITION",
+          counter: "03",
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: 8),
+        ),
+        PageItem(
+          isActive: false,
+          title: "CONTACT",
+          counter: "04",
+        ),
+      ],
+    );
+  }
+}
+
 class PageItem extends StatelessWidget {
   final String counter;
   final String title;
   final bool isActive;
 
   const PageItem({this.counter, this.title, this.isActive}) : super();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -98,7 +140,7 @@ class PageItem extends StatelessWidget {
           Text(
             counter,
             style: TextStyle(
-              color: (isActive)? Colors.white: Color(0xFF626262),
+              color: (isActive) ? Colors.white : Color(0xFF626262),
               fontSize: 16,
             ),
           ),
@@ -109,8 +151,8 @@ class PageItem extends StatelessWidget {
           ),
           Container(
             height: 2,
-            width: (isActive)? 96: 64,
-            color: (isActive)? Colors.white: Color(0xFF626262),
+            width: (isActive) ? 96 : 64,
+            color: (isActive) ? Colors.white : Color(0xFF626262),
           ),
           Padding(
             padding: EdgeInsets.only(
@@ -120,7 +162,7 @@ class PageItem extends StatelessWidget {
           Text(
             title,
             style: TextStyle(
-              color: (isActive)? Colors.white: Color(0xFF626262),
+              color: (isActive) ? Colors.white : Color(0xFF626262),
               fontSize: 16,
             ),
           ),
