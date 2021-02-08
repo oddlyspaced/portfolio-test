@@ -3,6 +3,17 @@ import 'dart:collection';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
+Map<String, String> icons = {
+  "github":
+      "https://raw.githubusercontent.com/oddlyspaced/portfolio-test/main/assets/icons/github.png",
+  "playstore":
+      "https://raw.githubusercontent.com/oddlyspaced/portfolio-test/main/assets/icons/playstore.png",
+  "instagram":
+      "https://raw.githubusercontent.com/oddlyspaced/portfolio-test/main/assets/icons/instagram.png",
+  "link":
+      "https://raw.githubusercontent.com/oddlyspaced/portfolio-test/main/assets/icons/link.png"
+};
+
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -40,6 +51,13 @@ class Home extends StatelessWidget {
                         Spacer(),
                         PageSwitcher(
                           titles: ["projects", "stuff"],
+                        ),
+                        Spacer(),
+                        TopNavbar(
+                          items: [
+                            "GitHub",
+                            "Instagram",
+                          ],
                         ),
                       ],
                     ),
@@ -79,11 +97,10 @@ class Home extends StatelessWidget {
                             ),
                           ),
                           ProjectItem(
-                            technology: "KOTLIN / ANDROID",
-                            name: "Covid 19 - Android",
-                            desc:
-                              "Unofficial Android App based on @covid19india's and @novelCOVID's api which visualises stats beautifully using graphs and tables."
-                          ),
+                              technology: "KOTLIN / ANDROID",
+                              name: "Covid 19 - Android",
+                              desc:
+                                  "Unofficial Android App based on @covid19india's and @novelCOVID's api which visualises stats beautifully using graphs and tables."),
                         ],
                       ),
                     ),
@@ -216,13 +233,6 @@ class ProjectItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Map<String, String> icons = {
-      "github":
-          "https://raw.githubusercontent.com/oddlyspaced/portfolio-test/main/assets/icons/github.png",
-      "playstore":
-          "https://raw.githubusercontent.com/oddlyspaced/portfolio-test/main/assets/icons/playstore.png"
-    };
-
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -310,7 +320,9 @@ class ProjectItem extends StatelessWidget {
                     ],
                   ),
                   Padding(
-                    padding: EdgeInsets.only(left: 24,),
+                    padding: EdgeInsets.only(
+                      left: 24,
+                    ),
                   ),
                   Row(
                     children: [
@@ -390,21 +402,48 @@ class TopNavbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
+    return Row(
       children: items
-          .map((elem) => Padding(
-                padding: const EdgeInsets.only(
-                  left: 16,
-                  right: 16,
-                ),
-                child: Text(
-                  elem,
-                  style: TextStyle(
-                    color: Color(0xFFe8e6e3),
-                    fontSize: 24,
+          .map(
+            (elem) => Padding(
+              padding: const EdgeInsets.only(
+                right: 16,
+              ),
+              child: Row(
+                children: [
+                  Image.network(
+                    icons[elem.toLowerCase()],
+                    color: Colors.white,
+                    height: 24,
+                    width: 24,
                   ),
-                ),
-              ))
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: 12,
+                    ),
+                  ),
+                  Text(
+                    elem,
+                    style: TextStyle(
+                      color: Color(0xFFe8e6e3),
+                      fontSize: 18,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: 8,
+                    ),
+                  ),
+                  Image.network(
+                    icons['link'],
+                    color: Colors.white,
+                    height: 16,
+                    width: 16,
+                  )
+                ],
+              ),
+            ),
+          )
           .toList(),
     );
   }
