@@ -69,42 +69,7 @@ class Home extends StatelessWidget {
                 ),
                 Flexible(
                   flex: 5,
-                  child: Container(
-                    height: double.infinity,
-                    child: SingleChildScrollView(
-                      child: Column(
-                        children: [
-                          ProjectItem(
-                            technology: "KOTLIN / ANDROID",
-                            name: "Burner Bits (Client)",
-                            desc:
-                                "News App created to present content in Quick and Easy to read format. Provides Image focused and features all rounded features like customisable User Feed, Offline Post Saving, Native Dark Mode, Grayscale Reading Mode and much more",
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: 12,
-                            ),
-                          ),
-                          ProjectItem(
-                            technology: "KOTLIN / ANDROID",
-                            name: "Guard",
-                            desc:
-                                "Privacy centric Android App which lets the user know about Apps which are having to excessive and critical permissions. Provides a Privacy Indicator which shows a dot on screen whenever the device's Camera and/or Mic is being used. Also has features like Cache Cleaner, Bulk Uninstall and Permission Logger",
-                          ),
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: 12,
-                            ),
-                          ),
-                          ProjectItem(
-                              technology: "KOTLIN / ANDROID",
-                              name: "Covid 19 - Android",
-                              desc:
-                                  "Unofficial Android App based on @covid19india's and @novelCOVID's api which visualises stats beautifully using graphs and tables."),
-                        ],
-                      ),
-                    ),
-                  ),
+                  child: ProjectsSection(),
                 ),
               ],
             ),
@@ -114,6 +79,49 @@ class Home extends StatelessWidget {
     );
   }
 }
+
+class ProjectsSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            ProjectItem(
+              technology: "KOTLIN / ANDROID",
+              name: "Burner Bits (Client)",
+              desc:
+              "News App created to present content in Quick and Easy to read format. Provides Image focused and features all rounded features like customisable User Feed, Offline Post Saving, Native Dark Mode, Grayscale Reading Mode and much more",
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                top: 12,
+              ),
+            ),
+            ProjectItem(
+              technology: "KOTLIN / ANDROID",
+              name: "Guard",
+              desc:
+              "Privacy centric Android App which lets the user know about Apps which are having to excessive and critical permissions. Provides a Privacy Indicator which shows a dot on screen whenever the device's Camera and/or Mic is being used. Also has features like Cache Cleaner, Bulk Uninstall and Permission Logger",
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                top: 12,
+              ),
+            ),
+            ProjectItem(
+                technology: "KOTLIN / ANDROID",
+                name: "Covid 19 - Android",
+                desc:
+                "Unofficial Android App based on @covid19india's and @novelCOVID's api which visualises stats beautifully using graphs and tables."),
+          ],
+        ),
+      ),
+
+    );
+  }
+}
+
 
 int active = 1;
 
