@@ -275,24 +275,54 @@ class ProjectItem extends StatelessWidget {
               ),
               Row(
                 children: [
-                  Image.network(
-                    icons['playstore'],
-                    color: Colors.white,
-                    height: 18,
-                    width: 18,
+                  Row(
+                    children: [
+                      Image.network(
+                        icons['playstore'],
+                        color: Colors.white,
+                        height: 18,
+                        width: 18,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 8,
+                        ),
+                      ),
+                      Text(
+                        "Google Play",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ],
                   ),
                   Padding(
-                    padding: EdgeInsets.only(
-                      left: 8,
-                    ),
+                    padding: EdgeInsets.only(left: 24,),
                   ),
-                  Text(
-                    "Google Play",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w300,
-                    ),
+                  Row(
+                    children: [
+                      Image.network(
+                        icons['github'],
+                        color: Colors.white,
+                        height: 18,
+                        width: 18,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(
+                          left: 8,
+                        ),
+                      ),
+                      Text(
+                        "Github",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               )
