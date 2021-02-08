@@ -35,7 +35,11 @@ class Home extends StatelessWidget {
                           ),
                         ),
                         SubHeader(),
-                        PageItem(),
+                        PageItem(
+                          isActive: true,
+                          title: "PROJECTS",
+                          counter: "01",
+                        ),
                       ],
                     ),
                   ),
@@ -81,15 +85,20 @@ class Home extends StatelessWidget {
 }
 
 class PageItem extends StatelessWidget {
+  final String counter;
+  final String title;
+  final bool isActive;
+
+  const PageItem({this.counter, this.title, this.isActive}) : super();
   @override
   Widget build(BuildContext context) {
     return Container(
       child: Row(
         children: [
           Text(
-            "01",
+            counter,
             style: TextStyle(
-              color: Color(0xFF626262),
+              color: (isActive)? Colors.white: Color(0xFF626262),
               fontSize: 16,
             ),
           ),
@@ -100,8 +109,8 @@ class PageItem extends StatelessWidget {
           ),
           Container(
             height: 2,
-            width: 64,
-            color: Color(0xFF626262),
+            width: (isActive)? 96: 64,
+            color: (isActive)? Colors.white: Color(0xFF626262),
           ),
           Padding(
             padding: EdgeInsets.only(
@@ -109,9 +118,9 @@ class PageItem extends StatelessWidget {
             ),
           ),
           Text(
-            "PROJECTS",
+            title,
             style: TextStyle(
-              color: Color(0xFF626262),
+              color: (isActive)? Colors.white: Color(0xFF626262),
               fontSize: 16,
             ),
           ),
