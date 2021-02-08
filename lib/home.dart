@@ -55,9 +55,9 @@ class Home extends StatelessWidget {
                       child: Column(
                         children: [
                           ProjectItem(
-                            technology: "KOTLIN",
-                            name: "Burner Bits 2.0",
-                            desc: "news app",
+                            technology: "KOTLIN / ANDROID",
+                            name: "Burner Bits (Client)",
+                            desc: "News App created to present content in Quick and Easy to read format. Provides Image focused and features all rounded features like customisable User Feed, Offline Post Saving, Native Dark Mode, Grayscale Reading Mode and much more",
                           ),
                           Padding(
                             padding: EdgeInsets.only(
@@ -216,46 +216,49 @@ class ProjectItem extends StatelessWidget {
           MediaQuery.of(context).size.width * 0.02,
           MediaQuery.of(context).size.height * 0.04,
         ),
-        child: Wrap(
-          alignment: WrapAlignment.start,
-          direction: Axis.vertical,
-          // crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              technology,
-              style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 4,
+        child: Flexible(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                technology,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.w700,
+                  letterSpacing: 4,
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                top: 8,
+              Padding(
+                padding: EdgeInsets.only(
+                  top: 8,
+                ),
               ),
-            ),
-            Text(
-              name,
-              style: TextStyle(
-                fontSize: 32,
-                color: Colors.white,
-                fontWeight: FontWeight.w600,
-                letterSpacing: 2,
+              Text(
+                name,
+                style: TextStyle(
+                  fontSize: 32,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 2,
+                ),
               ),
-            ),
-            Padding(
-              padding: EdgeInsets.only(
-                top: 8,
+              Padding(
+                padding: EdgeInsets.only(
+                  top: 8,
+                ),
               ),
-            ),
-            Text(
-              desc,
-              style: TextStyle(
-                color: Color(0xFFa1a1a1),
-                fontSize: 16,
+              Text(
+                desc,
+                softWrap: true,
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  color: Color(0xFFa1a1a1),
+                  fontSize: 16,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
