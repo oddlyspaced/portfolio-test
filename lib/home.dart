@@ -65,9 +65,9 @@ class Home extends StatelessWidget {
                             ),
                           ),
                           ProjectItem(
-                            technology: "KOTLIN",
-                            name: "Burner Bits 2.0",
-                            desc: "news app",
+                            technology: "KOTLIN / ANDROID",
+                            name: "Guard",
+                            desc: "Privacy centric Android App which lets the user know about Apps which are having to excessive and critical permissions. Provides a Privacy Indicator which shows a dot on screen whenever the device's Camera and/or Mic is being used. Also has features like Cache Cleaner, Bulk Uninstall and Permission Logger",
                           ),
                         ],
                       ),
@@ -250,7 +250,7 @@ class ProjectItem extends StatelessWidget {
               Text(
                 desc,
                 softWrap: true,
-                maxLines: 3,
+                maxLines: 5,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   color: Color(0xFFa1a1a1),
