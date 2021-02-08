@@ -135,7 +135,7 @@ class _PageSwitcherState extends State<PageSwitcher> {
           .map(
             (elem) => Padding(
               padding: const EdgeInsets.only(
-                top: 8,
+                bottom: 24,
               ),
               child: PageItem(
                 isActive: counter == active,
