@@ -277,6 +277,7 @@ class ProjectItem extends StatelessWidget {
                 children: [
                   Image.network(
                     icons['playstore'],
+                    color: Colors.white,
                     height: 18,
                     width: 18,
                   ),
@@ -288,7 +289,9 @@ class ProjectItem extends StatelessWidget {
                   Text(
                     "Google Play",
                     style: TextStyle(
-                      color: Color(0xFFa1a1a1),
+                      color: Colors.white,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w300,
                     ),
                   ),
                 ],
