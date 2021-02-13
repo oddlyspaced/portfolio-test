@@ -11,10 +11,12 @@ Map<String, String> icons = {
   "instagram":
       "https://raw.githubusercontent.com/oddlyspaced/portfolio-test/main/assets/icons/instagram.png",
   "link":
-      "https://raw.githubusercontent.com/oddlyspaced/portfolio-test/main/assets/icons/link.png"
+      "https://raw.githubusercontent.com/oddlyspaced/portfolio-test/main/assets/icons/link.png",
+  "medium":
+      "https://raw.githubusercontent.com/oddlyspaced/portfolio-test/main/assets/icons/medium.png"
 };
 
-int active = 1;
+int active = 2;
 
 class Home extends StatefulWidget {
   @override
@@ -57,8 +59,8 @@ class _HomeState extends State<Home> {
                         SubHeader(),
                         Spacer(),
                         PageSwitcher(
-                          titles: ["projects", "stuff"],
-                          onUpdate: (){
+                          titles: ["projects", "articles"],
+                          onUpdate: () {
                             setState(() {
                               print(active);
                             });
@@ -81,7 +83,7 @@ class _HomeState extends State<Home> {
                 ),
                 Flexible(
                   flex: 5,
-                  child: (active == 1)? ProjectsSection(): ProjectsSectionCopy(),
+                  child: (active == 1) ? ProjectsSection() : ArticlesSection(),
                 ),
               ],
             ),
@@ -89,7 +91,6 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
-
   }
 }
 
@@ -105,7 +106,7 @@ class ProjectsSection extends StatelessWidget {
               technology: "KOTLIN / ANDROID",
               name: "Burner Bits (Client)",
               desc:
-              "News App created to present content in Quick and Easy to read format. Provides Image focused and features all rounded features like customisable User Feed, Offline Post Saving, Native Dark Mode, Grayscale Reading Mode and much more",
+                  "News App created to present content in Quick and Easy to read format. Provides Image focused and features all rounded features like customisable User Feed, Offline Post Saving, Native Dark Mode, Grayscale Reading Mode and much more",
             ),
             Padding(
               padding: EdgeInsets.only(
@@ -116,7 +117,7 @@ class ProjectsSection extends StatelessWidget {
               technology: "KOTLIN / ANDROID",
               name: "Guard",
               desc:
-              "Privacy centric Android App which lets the user know about Apps which are having to excessive and critical permissions. Provides a Privacy Indicator which shows a dot on screen whenever the device's Camera and/or Mic is being used. Also has features like Cache Cleaner, Bulk Uninstall and Permission Logger",
+                  "Privacy centric Android App which lets the user know about Apps which are having to excessive and critical permissions. Provides a Privacy Indicator which shows a dot on screen whenever the device's Camera and/or Mic is being used. Also has features like Cache Cleaner, Bulk Uninstall and Permission Logger",
             ),
             Padding(
               padding: EdgeInsets.only(
@@ -127,16 +128,15 @@ class ProjectsSection extends StatelessWidget {
                 technology: "KOTLIN / ANDROID",
                 name: "Covid 19 - Android",
                 desc:
-                "Unofficial Android App based on @covid19india's and @novelCOVID's api which visualises stats beautifully using graphs and tables."),
+                    "Unofficial Android App based on @covid19india's and @novelCOVID's api which visualises stats beautifully using graphs and tables."),
           ],
         ),
       ),
-
     );
   }
 }
 
-class ProjectsSectionCopy extends StatelessWidget {
+class ArticlesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -144,20 +144,18 @@ class ProjectsSectionCopy extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            ProjectItem(
-              technology: "KOTLIN / ANDROID",
-              name: "Burner Bits (Client)",
+            ArticleItem(
+              name: "Diving into Android’s Wallpaper crash bug",
               desc:
-              "News App created to present content in Quick and Easy to read format. Provides Image focused and features all rounded features like customisable User Feed, Offline Post Saving, Native Dark Mode, Grayscale Reading Mode and much more",
+                  "Detailed article explaining about the bug in Android’s SystemUI which started crashing infinitely on applying a specific wallpaper.",
+              date: "JUN. 3, 2020",
             ),
           ],
         ),
       ),
-
     );
   }
 }
-
 
 class PageSwitcher extends StatelessWidget {
   final List<String> titles;
@@ -169,33 +167,27 @@ class PageSwitcher extends StatelessWidget {
   Widget build(BuildContext context) {
     int counter = 0;
     return Column(
-      children: titles
-          .map(
-              (elem) {
-            counter++;
-            return Padding(
-              padding: const EdgeInsets.only(
-                bottom: 24,
-              ),
-              child: GestureDetector(
-                onTap: () {
-                  active = titles.indexOf(elem) + 1;
-                  onUpdate();
-                },
-                child: PageItem(
-                  isActive: counter == active,
-                  title: elem.toUpperCase(),
-                  counter: (counter
-                      .toString()
-                      .length == 1)
-                      ? "0" + (counter).toString()
-                      : (counter).toString(),
-                ),
-              ),
-            );
-          }
-      )
-          .toList(),
+      children: titles.map((elem) {
+        counter++;
+        return Padding(
+          padding: const EdgeInsets.only(
+            bottom: 24,
+          ),
+          child: GestureDetector(
+            onTap: () {
+              active = titles.indexOf(elem) + 1;
+              onUpdate();
+            },
+            child: PageItem(
+              isActive: counter == active,
+              title: elem.toUpperCase(),
+              counter: (counter.toString().length == 1)
+                  ? "0" + (counter).toString()
+                  : (counter).toString(),
+            ),
+          ),
+        );
+      }).toList(),
     );
   }
 }
@@ -398,6 +390,170 @@ class ProjectItem extends StatelessWidget {
                   ),
                 ],
               )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ArticleItem extends StatelessWidget {
+  final String icon;
+  final String name;
+  final String desc;
+  final String date;
+
+  const ArticleItem({this.icon, this.name, this.desc, this.date}) : super();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(
+          4,
+        ),
+      ),
+      child: Padding(
+        padding: EdgeInsets.fromLTRB(
+          MediaQuery.of(context).size.width * 0.02,
+          MediaQuery.of(context).size.height * 0.04,
+          MediaQuery.of(context).size.width * 0.02,
+          MediaQuery.of(context).size.height * 0.04,
+        ),
+        child: Expanded(
+          flex: 20,
+          child: Row(
+            children: [
+              Expanded(
+                flex: 4,
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(52),
+                      child: Image.network(
+                        icons['medium'],
+                        color: Colors.black,
+                      ),
+                    ),
+                    decoration: BoxDecoration(
+                        color: Color(0xFF202022), shape: BoxShape.circle),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Padding(
+                  padding: EdgeInsets.only(left: 0),
+                ),
+              ),
+              Expanded(
+                flex: 15,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      date,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                        letterSpacing: 4,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: 8,
+                      ),
+                    ),
+                    Text(
+                      name,
+                      style: TextStyle(
+                        fontSize: 32,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 2,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: 8,
+                      ),
+                    ),
+                    Text(
+                      desc,
+                      softWrap: true,
+                      maxLines: 5,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: Color(0xFFa1a1a1),
+                        fontSize: 16,
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(
+                        top: 8,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Row(
+                          children: [
+                            Image.network(
+                              icons['playstore'],
+                              color: Colors.white,
+                              height: 18,
+                              width: 18,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                left: 8,
+                              ),
+                            ),
+                            Text(
+                              "Google Play",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            left: 24,
+                          ),
+                        ),
+                        Row(
+                          children: [
+                            Image.network(
+                              icons['github'],
+                              color: Colors.white,
+                              height: 18,
+                              width: 18,
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                left: 8,
+                              ),
+                            ),
+                            Text(
+                              "Github",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w300,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
         ),
