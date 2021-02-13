@@ -14,7 +14,14 @@ Map<String, String> icons = {
       "https://raw.githubusercontent.com/oddlyspaced/portfolio-test/main/assets/icons/link.png"
 };
 
-class Home extends StatelessWidget {
+int active = 1;
+
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,6 +58,11 @@ class Home extends StatelessWidget {
                         Spacer(),
                         PageSwitcher(
                           titles: ["projects", "stuff"],
+                          onUpdate: (){
+                            setState(() {
+                              print(active);
+                            });
+                          },
                         ),
                         Spacer(),
                         TopNavbar(
@@ -69,7 +81,7 @@ class Home extends StatelessWidget {
                 ),
                 Flexible(
                   flex: 5,
-                  child: ProjectsSection(),
+                  child: (active == 1)? ProjectsSection(): ProjectsSectionCopy(),
                 ),
               ],
             ),
@@ -77,6 +89,7 @@ class Home extends StatelessWidget {
         ),
       ),
     );
+
   }
 }
 
@@ -122,50 +135,64 @@ class ProjectsSection extends StatelessWidget {
   }
 }
 
-
-int active = 1;
-
-class PageSwitcher extends StatefulWidget {
-  final List<String> titles;
-
-  const PageSwitcher({this.titles}) : super();
-
+class ProjectsSectionCopy extends StatelessWidget {
   @override
-  _PageSwitcherState createState() => _PageSwitcherState();
+  Widget build(BuildContext context) {
+    return Container(
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            ProjectItem(
+              technology: "KOTLIN / ANDROID",
+              name: "Burner Bits (Client)",
+              desc:
+              "News App created to present content in Quick and Easy to read format. Provides Image focused and features all rounded features like customisable User Feed, Offline Post Saving, Native Dark Mode, Grayscale Reading Mode and much more",
+            ),
+          ],
+        ),
+      ),
+
+    );
+  }
 }
 
-class _PageSwitcherState extends State<PageSwitcher> {
+
+class PageSwitcher extends StatelessWidget {
+  final List<String> titles;
+  final Function onUpdate;
+
+  const PageSwitcher({this.titles, this.onUpdate}) : super();
+
   @override
   Widget build(BuildContext context) {
     int counter = 0;
     return Column(
-      children: widget.titles
+      children: titles
           .map(
-            (elem) {
-              counter++;
-              return Padding(
-                padding: const EdgeInsets.only(
-                  bottom: 24,
+              (elem) {
+            counter++;
+            return Padding(
+              padding: const EdgeInsets.only(
+                bottom: 24,
+              ),
+              child: GestureDetector(
+                onTap: () {
+                  active = titles.indexOf(elem) + 1;
+                  onUpdate();
+                },
+                child: PageItem(
+                  isActive: counter == active,
+                  title: elem.toUpperCase(),
+                  counter: (counter
+                      .toString()
+                      .length == 1)
+                      ? "0" + (counter).toString()
+                      : (counter).toString(),
                 ),
-                child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      active = widget.titles.indexOf(elem) + 1;
-                    });
-                  },
-                  child: PageItem(
-                    isActive: counter == active,
-                    title: elem.toUpperCase(),
-                    counter: (counter
-                        .toString()
-                        .length == 1)
-                        ? "0" + (counter).toString()
-                        : (counter).toString(),
-                  ),
-                ),
-              );
-            }
-          )
+              ),
+            );
+          }
+      )
           .toList(),
     );
   }
