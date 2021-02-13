@@ -97,6 +97,7 @@ class ProjectsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: double.infinity,
       child: SingleChildScrollView(
         child: Column(
           children: [
@@ -139,6 +140,7 @@ class ProjectsSectionCopy extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: double.infinity,
       child: SingleChildScrollView(
         child: Column(
           children: [
