@@ -435,7 +435,7 @@ class ArticleItem extends StatelessWidget {
                       padding: const EdgeInsets.all(52),
                       child: Image.network(
                         icons['medium'],
-                        color: Colors.black,
+                        color: Color(0xFFa1a1a1),
                       ),
                     ),
                     decoration: BoxDecoration(
@@ -454,19 +454,6 @@ class ArticleItem extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      date,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 4,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: 8,
-                      ),
-                    ),
                     Text(
                       name,
                       style: TextStyle(
@@ -496,61 +483,15 @@ class ArticleItem extends StatelessWidget {
                         top: 8,
                       ),
                     ),
-                    Row(
-                      children: [
-                        Row(
-                          children: [
-                            Image.network(
-                              icons['playstore'],
-                              color: Colors.white,
-                              height: 18,
-                              width: 18,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                left: 8,
-                              ),
-                            ),
-                            Text(
-                              "Google Play",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: 24,
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            Image.network(
-                              icons['github'],
-                              color: Colors.white,
-                              height: 18,
-                              width: 18,
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                left: 8,
-                              ),
-                            ),
-                            Text(
-                              "Github",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-                                fontWeight: FontWeight.w300,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    )
+                    Text(
+                      date,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w200,
+                        letterSpacing: 4,
+                        fontSize: 16,
+                      ),
+                    ),
                   ],
                 ),
               ),
