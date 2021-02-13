@@ -147,8 +147,14 @@ class ArticlesSection extends StatelessWidget {
             ArticleItem(
               name: "Diving into Android’s Wallpaper crash bug",
               desc:
-                  "Detailed article explaining about the bug in Android’s SystemUI which started crashing infinitely on applying a specific wallpaper.",
+              "Detailed article explaining about the bug in Android’s SystemUI which started crashing infinitely on applying a specific wallpaper.",
               date: "JUN. 3, 2020",
+            ),
+            ArticleItem(
+              name: "Compiling Aarogya Setu from source",
+              desc:
+              "An article on as to how one can compile the publicly available Aarogya Setu source code into a functioning apk. Also gives a basic primer on reverse engineering apk files.",
+              date: "JUN. 10, 2020",
             ),
           ],
         ),
