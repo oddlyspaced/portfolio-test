@@ -137,22 +137,34 @@ class PageSwitcher extends StatefulWidget {
 class _PageSwitcherState extends State<PageSwitcher> {
   @override
   Widget build(BuildContext context) {
-    int counter = 1;
+    int counter = 0;
     return Column(
       children: widget.titles
           .map(
-            (elem) => Padding(
-              padding: const EdgeInsets.only(
-                bottom: 24,
-              ),
-              child: PageItem(
-                isActive: counter == active,
-                title: elem.toUpperCase(),
-                counter: (counter.toString().length == 1)
-                    ? "0" + (counter++).toString()
-                    : (counter++).toString(),
-              ),
-            ),
+            (elem) {
+              counter++;
+              return Padding(
+                padding: const EdgeInsets.only(
+                  bottom: 24,
+                ),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      active = widget.titles.indexOf(elem) + 1;
+                    });
+                  },
+                  child: PageItem(
+                    isActive: counter == active,
+                    title: elem.toUpperCase(),
+                    counter: (counter
+                        .toString()
+                        .length == 1)
+                        ? "0" + (counter).toString()
+                        : (counter).toString(),
+                  ),
+                ),
+              );
+            }
           )
           .toList(),
     );
