@@ -38,55 +38,60 @@ class _HomeState extends State<Home> {
             MediaQuery.of(context).size.width * 0.08,
             MediaQuery.of(context).size.height * 0.08,
           ),
-          child: Flexible(
-            flex: 10,
-            child: Row(
-              children: [
-                Flexible(
-                  flex: 4,
-                  child: Container(
-                    width: double.infinity,
-                    // color: Colors.red,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Header(),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            top: 32,
-                          ),
-                        ),
-                        SubHeader(),
-                        Spacer(),
-                        PageSwitcher(
-                          titles: ["projects", "articles"],
-                          onUpdate: () {
-                            setState(() {
-                              print(active);
-                            });
-                          },
-                        ),
-                        Spacer(),
-                        TopNavbar(
-                          items: [
-                            "GitHub",
-                            "Instagram",
+          child: Row(
+            children: [
+              Flexible(
+                flex: 10,
+                child: Row(
+                  children: [
+                    Flexible(
+                      flex: 4,
+                      child: Container(
+                        width: double.infinity,
+                        // color: Colors.red,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Header(),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: 32,
+                              ),
+                            ),
+                            SubHeader(),
+                            Spacer(),
+                            PageSwitcher(
+                              titles: ["projects", "articles"],
+                              onUpdate: () {
+                                setState(() {
+                                  print(active);
+                                });
+                              },
+                            ),
+                            Spacer(),
+                            TopNavbar(
+                              items: [
+                                "GitHub",
+                                "Instagram",
+                              ],
+                            ),
                           ],
                         ),
-                      ],
+                      ),
                     ),
-                  ),
+                    Flexible(
+                      flex: 1,
+                      child: Container(),
+                    ),
+                    Flexible(
+                      flex: 5,
+                      child:
+                          (active == 1) ? ProjectsSection() : ArticlesSection(),
+                    ),
+                  ],
                 ),
-                Flexible(
-                  flex: 1,
-                  child: Container(),
-                ),
-                Flexible(
-                  flex: 5,
-                  child: (active == 1) ? ProjectsSection() : ArticlesSection(),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
@@ -147,13 +152,13 @@ class ArticlesSection extends StatelessWidget {
             ArticleItem(
               name: "Diving into Android’s Wallpaper crash bug",
               desc:
-              "Detailed article explaining about the bug in Android’s SystemUI which started crashing infinitely on applying a specific wallpaper.",
+                  "Detailed article explaining about the bug in Android’s SystemUI which started crashing infinitely on applying a specific wallpaper.",
               date: "JUN. 3, 2020",
             ),
             ArticleItem(
               name: "Compiling Aarogya Setu from source",
               desc:
-              "An article on as to how one can compile the publicly available Aarogya Setu source code into a functioning apk. Also gives a basic primer on reverse engineering apk files.",
+                  "An article on as to how one can compile the publicly available Aarogya Setu source code into a functioning apk. Also gives a basic primer on reverse engineering apk files.",
               date: "JUN. 10, 2020",
             ),
           ],
@@ -295,109 +300,113 @@ class ProjectItem extends StatelessWidget {
           MediaQuery.of(context).size.width * 0.02,
           MediaQuery.of(context).size.height * 0.04,
         ),
-        child: Flexible(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                technology,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 4,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  top: 8,
-                ),
-              ),
-              Text(
-                name,
-                style: TextStyle(
-                  fontSize: 32,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 2,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  top: 8,
-                ),
-              ),
-              Text(
-                desc,
-                softWrap: true,
-                maxLines: 5,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  color: Color(0xFFa1a1a1),
-                  fontSize: 16,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.only(
-                  top: 8,
-                ),
-              ),
-              Row(
+        child: Row(
+          children: [
+            Flexible(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      Image.network(
-                        icons['playstore'],
-                        color: Colors.white,
-                        height: 18,
-                        width: 18,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(
-                          left: 8,
-                        ),
-                      ),
-                      Text(
-                        "Google Play",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w300,
-                        ),
-                      ),
-                    ],
+                  Text(
+                    technology,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.w700,
+                      letterSpacing: 4,
+                    ),
                   ),
                   Padding(
                     padding: EdgeInsets.only(
-                      left: 24,
+                      top: 8,
+                    ),
+                  ),
+                  Text(
+                    name,
+                    style: TextStyle(
+                      fontSize: 32,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 2,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: 8,
+                    ),
+                  ),
+                  Text(
+                    desc,
+                    softWrap: true,
+                    maxLines: 5,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: Color(0xFFa1a1a1),
+                      fontSize: 16,
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: 8,
                     ),
                   ),
                   Row(
                     children: [
-                      Image.network(
-                        icons['github'],
-                        color: Colors.white,
-                        height: 18,
-                        width: 18,
+                      Row(
+                        children: [
+                          Image.network(
+                            icons['playstore'],
+                            color: Colors.white,
+                            height: 18,
+                            width: 18,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                              left: 8,
+                            ),
+                          ),
+                          Text(
+                            "Google Play",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ],
                       ),
                       Padding(
                         padding: EdgeInsets.only(
-                          left: 8,
+                          left: 24,
                         ),
                       ),
-                      Text(
-                        "Github",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w300,
-                        ),
+                      Row(
+                        children: [
+                          Image.network(
+                            icons['github'],
+                            color: Colors.white,
+                            height: 18,
+                            width: 18,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                              left: 8,
+                            ),
+                          ),
+                          Text(
+                            "Github",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w300,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
-                  ),
+                  )
                 ],
-              )
-            ],
-          ),
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -428,81 +437,85 @@ class ArticleItem extends StatelessWidget {
           MediaQuery.of(context).size.width * 0.02,
           MediaQuery.of(context).size.height * 0.04,
         ),
-        child: Expanded(
-          flex: 20,
-          child: Row(
-            children: [
-              Expanded(
-                flex: 4,
-                child: AspectRatio(
-                  aspectRatio: 1,
-                  child: Container(
-                    child: Padding(
-                      padding: const EdgeInsets.all(52),
-                      child: Image.network(
-                        icons['medium'],
-                        color: Color(0xFFa1a1a1),
+        child: Row(
+          children: [
+            Expanded(
+              flex: 20,
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 4,
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: Container(
+                        child: Padding(
+                          padding: const EdgeInsets.all(52),
+                          child: Image.network(
+                            icons['medium'],
+                            color: Color(0xFFa1a1a1),
+                          ),
+                        ),
+                        decoration: BoxDecoration(
+                            color: Color(0xFF202022), shape: BoxShape.circle),
                       ),
                     ),
-                    decoration: BoxDecoration(
-                        color: Color(0xFF202022), shape: BoxShape.circle),
                   ),
-                ),
+                  Expanded(
+                    flex: 1,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 0),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 15,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          name,
+                          style: TextStyle(
+                            fontSize: 32,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            letterSpacing: 2,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top: 8,
+                          ),
+                        ),
+                        Text(
+                          desc,
+                          softWrap: true,
+                          maxLines: 5,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: Color(0xFFa1a1a1),
+                            fontSize: 16,
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top: 8,
+                          ),
+                        ),
+                        Text(
+                          date,
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w200,
+                            letterSpacing: 4,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              Expanded(
-                flex: 1,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 0),
-                ),
-              ),
-              Expanded(
-                flex: 15,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      name,
-                      style: TextStyle(
-                        fontSize: 32,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 2,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: 8,
-                      ),
-                    ),
-                    Text(
-                      desc,
-                      softWrap: true,
-                      maxLines: 5,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        color: Color(0xFFa1a1a1),
-                        fontSize: 16,
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: 8,
-                      ),
-                    ),
-                    Text(
-                      date,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w200,
-                        letterSpacing: 4,
-                        fontSize: 16,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
