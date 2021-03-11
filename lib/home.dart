@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 
@@ -258,7 +256,7 @@ class Header extends StatelessWidget {
     return Text(
       "Hello, I'm\nHardik Srivastava",
       style: TextStyle(
-          color: Color(0xFFFFFFFF), fontSize: 80, fontWeight: FontWeight.bold),
+          color: Colors.white, fontSize: 80, fontWeight: FontWeight.bold),
     );
   }
 }
