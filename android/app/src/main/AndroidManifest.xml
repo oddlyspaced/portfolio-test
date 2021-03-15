@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.oddlyspaced.portfolio">
+    package="com.oddlyspaced.Portfolio">
    <application
-        android:label="portfolio"
+        android:label="Portfolio"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

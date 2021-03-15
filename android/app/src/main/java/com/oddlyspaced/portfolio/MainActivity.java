@@ -1,4 +1,4 @@
-package com.oddlyspaced.portfolio;
+package com.oddlyspaced.Portfolio;
 
 import io.flutter.embedding.android.FlutterActivity;
 
